@@ -1,0 +1,78 @@
+#  application.yml#  spring.application.name=journal App
+#    spring.data.mongodb.host=localhost
+#    spring.data.mongodb.port=27017
+#    spring.data.mongodb.database=journaldb
+#    spring.data.mongodb.auto-index-creation=true
+
+spring:
+  application:
+    name: journal App
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username:
+    password:
+
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+  data:
+    mongodb:
+      host: localhost
+      database: journaldb
+      auto-index-creation: true
+      port: 27017
+
+    redis:
+      host: localhost
+      port: 6379
+  swagger-ui:
+
+#  kafka:
+#    bootstrap-servers:
+#    producer:
+#      key-serializer:
+#      value-serializer:
+#    consumer:
+#      group-id: weekly-sentiment-group
+#      key-deserializer:
+#      value-deserializer:
+#      properties:
+#        spring:
+#          json:
+#            trusted:
+#              packages:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: my-group-id
+      auto-offset-reset: earliest # or "latest"
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      retries: 0
+      batch-size: 16384
+      linger.ms: 1
+      buffer.memory: 33554432
+
+
+server:
+  port: 8080
+  servlet:
+    context-path: /journal
+
+
+
+#
+#logging:
+#  level:
+#    com:
+#      ai:
+#        journalApp: INFO

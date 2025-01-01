@@ -1,0 +1,11 @@
+#  application.yml#  spring.application.name=journal App
+#    spring.data.mongodb.host=localhost
+#    spring.data.mongodb.port=27017
+#    spring.data.mongodb.database=journaldb
+#    spring.data.mongodb.auto-index-creation=true
+
+spring:
+  profiles:
+    active: dev
+
+
